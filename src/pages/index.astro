@@ -1,8 +1,29 @@
 ---
 import BasicLayout from "../layout/BasicLayout.astro";
+import Card from "../components/Card.astro";
+
+const responseData = await fetch("https://randomuser.me/api/?results=5");
+const users = await responseData.json();
+
+// console.log(users);
 ---
 
 <BasicLayout title="Home">
-  <h1 class="text-3xl bg-red-500">Welcome to Astro!</h1>
-  <p>This is the home page.</p>
+  <h1 class="bg-red-500 text-3xl">Welcome to Astro!</h1>
+  <ul>
+    {
+      users.results.map((user) => (
+        <li>
+          <Card
+            first={user.name.first}
+            last={user.name.last}
+            genre={user.gender}
+            email={user.email}
+            phone={user.phone}
+            picture={user.picture.large}
+          />
+        </li>
+      ))
+    }
+  </ul>
 </BasicLayout>

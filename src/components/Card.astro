@@ -1,0 +1,13 @@
+---
+const { first, last, genre, email, phone, picture } = Astro.props;
+---
+
+<article
+  class="animate-wiggle flex flex-col items-center rounded border p-4 shadow-md"
+>
+  <h2>{first} {last}</h2>
+  <p>Genre: {genre}</p>
+  <p>Email: {email}</p>
+  <p>Phone: {phone}</p>
+  <img src={picture} alt={`${first} ${last}`} />
+</article>
