@@ -10,20 +10,25 @@ const users = await responseData.json();
 
 <BasicLayout title="Home">
   <h1 class="bg-red-500 text-3xl">Welcome to Astro!</h1>
-  <ul>
-    {
-      users.results.map((user) => (
-        <li>
-          <Card
-            first={user.name.first}
-            last={user.name.last}
-            genre={user.gender}
-            email={user.email}
-            phone={user.phone}
-            picture={user.picture.large}
-          />
-        </li>
-      ))
-    }
-  </ul>
+  <!-- marquee -->
+  <div class="max-w-7xl overflow-hidden">
+    <!-- marquee track -->
+    <ul class="grid-cols-[] font-test grid">
+      {
+        users.results.map((user) => (
+          // marquee item
+          <li>
+            <Card
+              first={user.name.first}
+              last={user.name.last}
+              genre={user.gender}
+              email={user.email}
+              phone={user.phone}
+              picture={user.picture.large}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </BasicLayout>
